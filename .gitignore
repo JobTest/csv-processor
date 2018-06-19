@@ -3,5 +3,4 @@
 .gradle/
 out/
 build/
-data/*.csv
 logs/
