@@ -90,3 +90,9 @@ http://<HOST>/books-by-writer/<PARAM>.csv
 ![10.jpg](10.jpg)
 
 
+
+Ресурсы
+-------
+
+* http://ac2epsilon.github.io/TRANS/SCALA/AkkaStreams.html
+* ( https://github.com/akka/akka-http/blob/master/docs/src/test/java/docs/http/javadsl/HttpClientExampleDocTest.java )
