@@ -12,6 +12,7 @@ public class BookMapperImpl implements BookMapper {
             return null;
         } else {
             BookDTO bookDTO = new BookDTO();
+            bookDTO.setId(entity.getId());
             bookDTO.setTitle(entity.getTitle());
             bookDTO.setAuthor(entity.getAuthor());
             bookDTO.setAbout(entity.getAbout());
@@ -26,6 +27,7 @@ public class BookMapperImpl implements BookMapper {
             return null;
         } else {
             Book book = new Book();
+            book.setId(bookDTO.getId());
             book.setTitle(bookDTO.getTitle());
             book.setAuthor(bookDTO.getAuthor());
             book.setAbout(bookDTO.getAbout());

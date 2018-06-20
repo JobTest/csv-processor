@@ -10,14 +10,7 @@ public class CsvReportRepository {
 
     private final ConcurrentHashMap<Integer, CsvReport> writers = new ConcurrentHashMap<>();
 
-    private final ConcurrentHashMap<Integer, Long> sequence = new ConcurrentHashMap<>();
-
-    private long getSequence(CsvReport writer) {
-        Long amount = sequence.get(writer.hashCode());
-        amount = (amount!=null) ? amount + 1 : 1;
-        sequence.put(writer.hashCode(), amount);
-        return amount;
-    }
+    private final Sequence sequence = new Sequence();
 
     public Collection<CsvReport> find() {
         return writers.values();
@@ -34,7 +27,8 @@ public class CsvReportRepository {
         if(writer!=null) {
             id = writer.hashCode();
             newWriter.writer(writer.getWriter())
-                    .amount(getSequence(writer))
+                    .id(id)
+                    .amount(sequence.getAmount(writer))
                     .jsonUrl(writer.getJsonUrl())
                     .csvUrl(writer.getCsvUrl());
             writers.put(id, newWriter);

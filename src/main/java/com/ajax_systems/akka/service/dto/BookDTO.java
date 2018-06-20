@@ -8,6 +8,8 @@ import java.io.Serializable;
  */
 public class BookDTO implements Serializable {
 
+    private int id;
+
     private String title;
 
     private String author;
@@ -17,6 +19,14 @@ public class BookDTO implements Serializable {
     private Double price;
 
     private Integer number;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -61,7 +71,8 @@ public class BookDTO implements Serializable {
     @Override
     public String toString() {
         return "BookDTO{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", about='" + about + '\'' +
                 ", price=" + price +

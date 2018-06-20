@@ -1,16 +1,14 @@
 package com.ajax_systems.akka.dao;
 
 import com.ajax_systems.akka.model.Book;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 
 public class BookRepository {
 
-    private final ConcurrentHashMap<Integer, Book> books = new ConcurrentHashMap<>();
+    private final ConcurrentSkipListMap<Integer, Book> books = new ConcurrentSkipListMap<>();
 
     public List<Book> find() {
         return new ArrayList<>(books.values());
@@ -26,7 +24,8 @@ public class BookRepository {
 
         if (book!=null) {
             id = book.hashCode();
-            newBook.title(book.getTitle())
+            newBook.id(id)
+                    .title(book.getTitle())
                     .author(book.getAuthor())
                     .about(book.getAbout())
                     .price(book.getPrice())

@@ -30,7 +30,7 @@ public class Cli {
         options.addOption("h", "help", false, "show help.");
         options.addOption("r", "run", true, "Here you can set parameter: 'console' or 'web'.");
         options.addOption("b", "books-by-writer", true, "Here you can set parameter: 'one' or 'two' or 'three' or 'four'.");
-        options.addOption("s", "sort", true, "Here you can set parameter: 'number' or 'price'.");
+        options.addOption("s", "sort", true, "Here you can set parameter: 'id' or 'number' or 'price'.");
     }
 
     public String getRun() {

@@ -22,6 +22,7 @@ public class TotalCsvReportMapperImpl implements TotalCsvReportMapper {
                     .map(csvReport -> {
                         double percentage = (100 * (double) csvReport.getAmount()) / (double) totalAmount;
                         CsvReportDTO csvReportDTO = new CsvReportDTO();
+                        csvReportDTO.setId(csvReport.getId());
                         csvReportDTO.setWriter(csvReport.getWriter());
                         csvReportDTO.setAmount(csvReport.getAmount());
                         csvReportDTO.setJsonUrl(csvReport.getJsonUrl());

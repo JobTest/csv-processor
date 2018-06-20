@@ -8,6 +8,8 @@ import java.io.Serializable;
  */
 public class CsvReportDTO implements Serializable {
 
+    private int id;
+
     private String writer;
 
     private Long amount;
@@ -17,6 +19,14 @@ public class CsvReportDTO implements Serializable {
     private String jsonUrl;
 
     private String csvUrl;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getWriter() {
         return writer;
@@ -61,7 +71,8 @@ public class CsvReportDTO implements Serializable {
     @Override
     public String toString() {
         return "CsvReportDTO{" +
-                "writer='" + writer + '\'' +
+                "id=" + id +
+                ", writer='" + writer + '\'' +
                 ", amount=" + amount +
                 ", percentage=" + percentage +
                 ", jsonUrl='" + jsonUrl + '\'' +

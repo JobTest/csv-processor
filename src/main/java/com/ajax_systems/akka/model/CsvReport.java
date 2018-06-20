@@ -11,6 +11,8 @@ public class CsvReport implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private int id;
+
     private String writer;
 
     private Long amount;
@@ -18,6 +20,19 @@ public class CsvReport implements Serializable {
     private String jsonUrl;
 
     private String csvUrl;
+
+    public int getId() {
+        return id;
+    }
+
+    public CsvReport id(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getWriter() {
         return writer;
@@ -82,6 +97,6 @@ public class CsvReport implements Serializable {
     @Override
     public int hashCode() {
 
-        return Objects.hash(writer);
+        return Math.abs(Objects.hash(writer));
     }
 }

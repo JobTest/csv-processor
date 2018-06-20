@@ -33,30 +33,32 @@ public class PrintUtil {
     private static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     private static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
-    private static final String SORT_DEFAULT = "none";
+    private static final String SORT_DEFAULT = "id";
 
-    private static final String[] headData = new String[]{ "NUMBER", "PRICE", "TITLE", "ABOUT", "AUTHOR" };
+    private static final String[] headData = new String[]{ "ID", "NUMBER", "PRICE", "TITLE", "ABOUT", "AUTHOR" };
 
-    private static final String formatSeparator = "+-------------+----------------------+---------------+----------------+---------------+";
+    private static final String formatSeparator = "+-------------+-------------+----------------------+---------------+----------------+---------------+";
 
     private static final String formatHeadData =
             '\n' +
                 "|" + ANSI_PURPLE + " %1$-11s " + ANSI_RESET +
-                "|" + ANSI_PURPLE + " %2$-20s " + ANSI_RESET +
-                "|" + ANSI_PURPLE + " %3$-13s " + ANSI_RESET +
-                "|" + ANSI_PURPLE + " %4$-14s " + ANSI_RESET +
-                "|" + ANSI_PURPLE + " %5$-13s " + ANSI_RESET +
+                "|" + ANSI_PURPLE + " %2$-11s " + ANSI_RESET +
+                "|" + ANSI_PURPLE + " %3$-20s " + ANSI_RESET +
+                "|" + ANSI_PURPLE + " %4$-13s " + ANSI_RESET +
+                "|" + ANSI_PURPLE + " %5$-14s " + ANSI_RESET +
+                "|" + ANSI_PURPLE + " %6$-13s " + ANSI_RESET +
                 "|\n";
 
     private static final String getFormatOutData(String sort) {
         if (sort==null)
             sort = SORT_DEFAULT;
 
-        return "|" + (sort.equals("number") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %1$-11s " + ANSI_RESET +
-                "|" + (sort.equals("price") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %2$-20s " + ANSI_RESET +
-                "|" + (sort.equals("title") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %3$-10s " + ANSI_RESET +
-                "|" + (sort.equals("about") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %4$-10s " + ANSI_RESET +
-                "|" + (sort.equals("author") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %5$-10s " + ANSI_RESET +
+        return "|" + (sort.equals("id") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %1$-11s " + ANSI_RESET +
+                "|" + (sort.equals("number") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %2$-11s " + ANSI_RESET +
+                "|" + (sort.equals("price") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %3$-20s " + ANSI_RESET +
+                "|" + (sort.equals("title") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %4$-10s " + ANSI_RESET +
+                "|" + (sort.equals("about") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %5$-10s " + ANSI_RESET +
+                "|" + (sort.equals("author") ? ANSI_BLACK_BACKGROUND : "") + ANSI_YELLOW + " %6$-10s " + ANSI_RESET +
                 "|\n";
     }
 
@@ -67,12 +69,13 @@ public class PrintUtil {
         System.out.println(formatSeparator);
 
         for (BookDTO book: books) {
+            String id = String.valueOf(book.getId());
             String number = String.valueOf(book.getNumber());
             String price = String.valueOf(book.getPrice());
             String about = new String(book.getAbout().getBytes("UTF-8"), 0, book.getAbout().length(), "GB18030");
             String author = new String(book.getAuthor().getBytes("UTF-8"), 0, book.getAuthor().length(), "GB18030");
             String title = new String(book.getTitle().getBytes("UTF-8"), 0, book.getTitle().length(), "GB18030");
-            String[] outData = new String[]{number, price, title, about, author};
+            String[] outData = new String[]{id, number, price, title, about, author};
 
             System.out.format(getFormatOutData(sort), outData);
         }

@@ -8,9 +8,11 @@ import java.util.Objects;
 /**
  * A Book.
  */
-public class Book implements Serializable  {
+public class Book implements Serializable, Comparable<Book>  {
 
     private static final long serialVersionUID = 1L;
+
+    private int id;
 
     private String title;
 
@@ -21,6 +23,19 @@ public class Book implements Serializable  {
     private Double price;
 
     private Integer number;
+
+    public int getId() {
+        return id;
+    }
+
+    public Book id(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -100,7 +115,16 @@ public class Book implements Serializable  {
     @Override
     public int hashCode() {
 
-        return Objects.hash(title, author, about);
+        return Math.abs(Objects.hash(title, author, about));
+    }
+
+    @Override
+    public int compareTo(Book b) {
+        if (b.getId() < this.getId())
+            return 1;
+        if (b.getId() > this.getId())
+            return -1;
+        return 0;
     }
 
     public static Comparator<Book> sortByNumber = new Comparator<Book>() {
