@@ -34,7 +34,7 @@ public class CsvProcessor {
                 System.out.println("You starting as WEB application");
                 Injector injector = Guice.createInjector(new WebModule());
                 injector.getInstance(CsvRoute.class)
-                        .startServer(config.getString("csvRoute.host"), config.getInt("csvRoute.port"));
+                        .startServer(config.getString("server.host"), config.getInt("server.port"));
                 break;
             }
             default:

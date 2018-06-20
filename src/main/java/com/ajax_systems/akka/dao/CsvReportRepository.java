@@ -8,46 +8,45 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CsvReportRepository {
 
-    private final ConcurrentHashMap<Integer, CsvReport> csvReports = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Integer, CsvReport> writers = new ConcurrentHashMap<>();
 
-    private final ConcurrentHashMap<Integer, Long> bookAmount = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Integer, Long> sequence = new ConcurrentHashMap<>();
+
+    private long getSequence(CsvReport writer) {
+        Long amount = sequence.get(writer.hashCode());
+        amount = (amount!=null) ? amount + 1 : 1;
+        sequence.put(writer.hashCode(), amount);
+        return amount;
+    }
 
     public Collection<CsvReport> find() {
-        return csvReports.values();
+        return writers.values();
     }
 
     public CsvReport findOne(Integer id) {
-        return csvReports.get(id);
+        return writers.get(id);
     }
 
-    public CsvReport save(CsvReport csvReport) {
+    public CsvReport save(CsvReport writer) {
         Integer id = 0;
-        CsvReport newCsv = new CsvReport();
+        CsvReport newWriter = new CsvReport();
 
-        if(csvReport!=null) {
-            id = csvReport.hashCode();
-            long amount = getRecount(id);
-            newCsv.writer(csvReport.getWriter())
-                    .amount(amount)
-                    .jsonUrl(csvReport.getJsonUrl())
-                    .csvUrl(csvReport.getCsvUrl());
-            csvReports.put(id, newCsv);
+        if(writer!=null) {
+            id = writer.hashCode();
+            newWriter.writer(writer.getWriter())
+                    .amount(getSequence(writer))
+                    .jsonUrl(writer.getJsonUrl())
+                    .csvUrl(writer.getCsvUrl());
+            writers.put(id, newWriter);
         }
-        return newCsv;
+        return newWriter;
     }
 
-    public void update(Integer id, CsvReport csv) {
-        csvReports.put(id, csv);
+    public void update(Integer id, CsvReport writer) {
+        writers.put(id, writer);
     }
 
     public void delete(Integer id) {
-        csvReports.remove(id);
-    }
-
-    private long getRecount(int id) {
-        Long amount = bookAmount.get(id);
-        amount = (amount!=null) ? amount + 1 : 1;
-        bookAmount.put(id, amount);
-        return amount;
+        writers.remove(id);
     }
 }

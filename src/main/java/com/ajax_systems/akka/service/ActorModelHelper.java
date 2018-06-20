@@ -134,8 +134,8 @@ public class ActorModelHelper {
     }
 
     private String getOutUrl() {
-        String host = CsvUtil.config.getString("csvRoute.host");
-        Integer port = CsvUtil.config.getInt("csvRoute.port");
+        String host = CsvUtil.config.getString("server.host");
+        Integer port = CsvUtil.config.getInt("server.port");
         return "http://" + host + ":" + port + "/books-by-writer/";
     }
 
