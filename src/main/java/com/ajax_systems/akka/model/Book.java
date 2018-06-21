@@ -114,8 +114,7 @@ public class Book implements Serializable, Comparable<Book>  {
 
     @Override
     public int hashCode() {
-
-        return Math.abs(Objects.hash(title, author, about));
+        return Objects.hash(title, author, about);
     }
 
     @Override

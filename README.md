@@ -89,7 +89,7 @@ http://< HOST >/books-by-writer/<PARAM>.csv
 
 ![8](8.jpg)
 
-![9_1](9_1.jpg)
+![9_1](9_1.jpg) 
 
 ![9_2](9_2.jpg)
 

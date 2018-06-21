@@ -1,7 +1,6 @@
 package com.ajax_systems.akka.dao;
 
 import com.ajax_systems.akka.model.CsvReport;
-
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -10,7 +9,9 @@ public class CsvReportRepository {
 
     private final ConcurrentHashMap<Integer, CsvReport> writers = new ConcurrentHashMap<>();
 
-    private final Sequence sequence = new Sequence();
+    private final AmountSequence seqAmount = new AmountSequence();
+
+    private final IdSequence seqId = new IdSequence();
 
     public Collection<CsvReport> find() {
         return writers.values();
@@ -25,10 +26,10 @@ public class CsvReportRepository {
         CsvReport newWriter = new CsvReport();
 
         if(writer!=null) {
-            id = writer.hashCode();
+            id = seqId.get(writer);
             newWriter.writer(writer.getWriter())
                     .id(id)
-                    .amount(sequence.getAmount(writer))
+                    .amount(seqAmount.get(writer))
                     .jsonUrl(writer.getJsonUrl())
                     .csvUrl(writer.getCsvUrl());
             writers.put(id, newWriter);

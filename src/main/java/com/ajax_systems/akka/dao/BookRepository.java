@@ -10,6 +10,8 @@ public class BookRepository {
 
     private final ConcurrentSkipListMap<Integer, Book> books = new ConcurrentSkipListMap<>();
 
+    private final IdSequence seqId = new IdSequence();
+
     public List<Book> find() {
         return new ArrayList<>(books.values());
     }
@@ -23,7 +25,7 @@ public class BookRepository {
         Book newBook = new Book();
 
         if (book!=null) {
-            id = book.hashCode();
+            id = seqId.get(book);
             newBook.id(id)
                     .title(book.getTitle())
                     .author(book.getAuthor())

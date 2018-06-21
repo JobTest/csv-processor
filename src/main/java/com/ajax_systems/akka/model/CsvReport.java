@@ -96,7 +96,6 @@ public class CsvReport implements Serializable {
 
     @Override
     public int hashCode() {
-
-        return Math.abs(Objects.hash(writer));
+        return Objects.hash(writer);
     }
 }
