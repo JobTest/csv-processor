@@ -9,9 +9,9 @@ public class CsvReportRepository {
 
     private final ConcurrentHashMap<Integer, CsvReport> writers = new ConcurrentHashMap<>();
 
-    private final AmountSequence seqAmount = new AmountSequence();
-
     private final IdSequence seqId = new IdSequence();
+
+    private final AmountSequence seqAmount = new AmountSequence();
 
     public Collection<CsvReport> find() {
         return writers.values();
