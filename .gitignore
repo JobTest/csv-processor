@@ -3,3 +3,7 @@
 out/
 build/
 logs/
+gradle
+.gradle/
+gradlew
+gradlew.*
