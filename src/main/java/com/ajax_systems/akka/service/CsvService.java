@@ -11,17 +11,25 @@ import java.util.List;
 public interface CsvService {
 
     /**
+     * Upload form-data from client side to server side use rest-api
      *
      * @param data
-     * @return
      */
     void doUpload(Source<ByteString, Object> data);
 
     /**
+     * Download data from server side to client side use rest-api
+     *
+     * @param writer
+     * @param sort
+     * @return
+     */
+    List<BookDTO> findBookByWriter(String writer, String sort);
+
+    /**
+     * Get report full status
      *
      * @return
      */
     TotalCsvReportDTO findTotalBooks();
-
-    List<BookDTO> findBookByWriter(String writer, String sort);
 }

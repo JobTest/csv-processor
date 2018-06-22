@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * A CsvReport.
  */
-public class CsvReport implements Serializable {
+public class CsvReport implements Serializable, Comparable<CsvReport> {
 
     private static final long serialVersionUID = 1L;
 
@@ -97,5 +97,14 @@ public class CsvReport implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(writer);
+    }
+
+    @Override
+    public int compareTo(CsvReport cr) {
+        if (cr.getId() < this.getId())
+            return 1;
+        if (cr.getId() > this.getId())
+            return -1;
+        return 0;
     }
 }

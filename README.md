@@ -1,3 +1,10 @@
+
+* `git clone https://github.com/JobTest/csv-processor.git`
+* `cd csv-processor`
+* `git chechout java`
+* `git push`
+
+
 Akka Reactive Streams for Java
 ------------------------------
 

@@ -2,12 +2,12 @@ package com.ajax_systems.akka.dao;
 
 import com.ajax_systems.akka.model.CsvReport;
 import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 
 public class CsvReportRepository {
 
-    private final ConcurrentHashMap<Integer, CsvReport> writers = new ConcurrentHashMap<>();
+    private final ConcurrentSkipListMap<Integer, CsvReport> writers = new ConcurrentSkipListMap<>();
 
     private final IdSequence seqId = new IdSequence();
 
