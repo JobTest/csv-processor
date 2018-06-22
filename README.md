@@ -1,6 +1,7 @@
 * `git clone https://github.com/JobTest/csv-processor.git`
 * `cd csv-processor`
-* `git chechout java`
+* `git checkout java`
+* `git status`
 * `git push`
 
 
