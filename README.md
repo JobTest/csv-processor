@@ -1,6 +1,6 @@
 * `git clone https://github.com/JobTest/csv-processor.git`
 * `cd csv-processor`
-* `git chechout java`
+* `git chechout scala`
 * `git push`
 
 
@@ -141,10 +141,6 @@ http://< HOST >/books-by-writer/<PARAM>.csv
 
 ![9_2](9_2.jpg)
 
-
-Приложение собирает в JAR через команду **_gradle clean buildJar_**
-
-![10](10.jpg)
 http://localhost:8080/books
 
 
