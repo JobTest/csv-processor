@@ -29,7 +29,6 @@ class WebServerSpec extends FunSpec {
     }
 
     describe("csv upload") {
-
       val csvContent: String =
         """
           |1, ABC
@@ -44,8 +43,5 @@ class WebServerSpec extends FunSpec {
         .Then()
         .statusCode(200)
     }
-
   }
-
-
 }
