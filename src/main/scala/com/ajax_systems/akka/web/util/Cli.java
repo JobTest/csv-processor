@@ -24,7 +24,7 @@ public class Cli {
 
     private String sort;
 
-    public Cli(String... args) {
+    public Cli(String[] args) {
         this.args = args;
 
         options.addOption("h", "help", false, "show help.");
