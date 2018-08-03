@@ -13,7 +13,7 @@ class CsvMapperImpl extends CsvMapper {
             return null
         } else {
           val csvDTO = new CsvDTO
-            csvDTO.writer = entity.getWriter
+            csvDTO.writer = entity.getWriter //csvDTO.writer(entity.getWriter)
             csvDTO.value = entity.getValue
             csvDTO.row = entity.getRow
             return csvDTO

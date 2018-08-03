@@ -3,7 +3,7 @@
 <configuration scan="true" scanPeriod="10 seconds">
 
     <!-- Simple file output -->
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender title="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- encoder defaults to ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
@@ -24,7 +24,7 @@
 
 
     <!-- Console output -->
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender title="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoder defaults to ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
         <encoder>
             <pattern>%-5level %logger{36} - %msg%n</pattern>
@@ -44,9 +44,9 @@
     </root>
 
     <!-- For loggers in the these namespaces, log at all levels. -->
-    <logger name="user" booksByWriter="ALL"/>
+    <logger title="user" booksByWriter="ALL"/>
     <!-- To log pedestal internals, enable this and change ThresholdFilter to DEBUG
-    <logger name="pedestal" booksByWriter="ALL" />
+    <logger title="pedestal" booksByWriter="ALL" />
     -->
 
 </configuration>
