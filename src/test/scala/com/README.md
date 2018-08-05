@@ -1,4 +1,12 @@
 
+Scala структура приложения
+--------------------------
+
+* http://qaru.site/questions/9727/scala-application-structure
+
+
+--------------------------
+
 >>  https://doc.akka.io/docs/akka/2.4.11/scala/http/routing-dsl/directives/marshalling-directives/entity.html
 >>  https://doc.akka.io/docs/akka/2.4.11/AkkaScala.pdf
 >>  https://www.scala-lang.org/old/node/6124.html
